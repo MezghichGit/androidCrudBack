@@ -32,7 +32,7 @@ MongoClient.connect(url, function(err, client) {
  db = client.db(dbName);
 });
 
-app.get('/users', (req,res) => {
+app.get('/users/list/', (req,res) => {
       db.collection('user').find({}).toArray(function(err, docs) {
           if (err) {
               console.log(err)
@@ -54,7 +54,7 @@ app.get('/users', (req,res) => {
           }
         })
         
-        app.post('/users', async (req,res) => {
+        app.post('/users/add/', async (req,res) => {
               try {
                   const equipeData = req.body
                   const equipe = await db.collection('user').insertOne(equipeData)
